@@ -28,7 +28,8 @@ const ELEMENT_DATA: Element[] = [
 @Component({
     selector: 'app-sortable',
     templateUrl: './sortable.component.html',
-    styleUrls: ['./sortable.component.scss']
+    styleUrls: ['./sortable.component.scss'],
+    standalone: false
 })
 export class SortableComponent implements AfterViewInit {
     displayedColumns = ['position', 'name', 'weight', 'symbol'];

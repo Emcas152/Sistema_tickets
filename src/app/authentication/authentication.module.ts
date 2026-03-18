@@ -17,7 +17,7 @@ import {
     MatButtonModule
 } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 
 import { AuthenticationRoutes } from './authentication.routing';
 import { ErrorComponent } from './error/error.component';

@@ -46,7 +46,8 @@ import { Router } from '@angular/router';
             </div>
         </div>
     </form>
-  `
+  `,
+    standalone: false
 })
 export class ListingDialogDataExampleDialogComponent {
     constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
@@ -55,7 +56,8 @@ export class ListingDialogDataExampleDialogComponent {
 @Component({
     selector: 'app-listing',
     templateUrl: './listing.component.html',
-    styleUrls: ['./listing.component.css']
+    styleUrls: ['./listing.component.css'],
+    standalone: false
 })
 export class ListingComponent implements OnInit {
 

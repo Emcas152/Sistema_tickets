@@ -4,13 +4,11 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { DemoMaterialModule } from '../demo-material-module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 import { FormRoutes } from './forms.routing';
 import { QuillModule } from 'ngx-quill';
 
 import { MatDatepickerModule } from '@angular/material/datepicker';
-
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
@@ -37,8 +35,7 @@ import { MultiselectComponent } from './multiselect/multiselect.component';
         FormsModule,
         QuillModule.forRoot(),
         ReactiveFormsModule,
-        MatDatepickerModule,
-        NgMultiSelectDropDownModule.forRoot()
+        MatDatepickerModule
     ],
     declarations: [
         AutocompleteComponent,

@@ -122,7 +122,8 @@ const employees = [
 @Component({
     selector: 'app-dashboard-emp',
     templateUrl: './dashboard-emp.component.html',
-    styleUrls: ['./dashboard-emp.component.scss']
+    styleUrls: ['./dashboard-emp.component.scss'],
+    standalone: false
 })
 export class DashboardEmpComponent implements OnInit, AfterViewInit {
 

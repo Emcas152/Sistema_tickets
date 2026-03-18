@@ -5,7 +5,8 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 @Component({
     selector: 'app-basictable',
     templateUrl: './basic-table.component.html',
-    styleUrls: ['./basic-table.component.scss']
+    styleUrls: ['./basic-table.component.scss'],
+    standalone: false
 })
 export class BasicTableComponent {
     constructor(breakpointObserver: BreakpointObserver) {

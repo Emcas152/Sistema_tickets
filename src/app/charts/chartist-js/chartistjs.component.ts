@@ -14,7 +14,8 @@ export interface Chart {
   events?: ChartEvent;
 }
 @Component({
-  templateUrl: './chartistjs.component.html'
+    templateUrl: './chartistjs.component.html',
+    standalone: false
 })
 export class ChartistjsComponent {
   // Barchart

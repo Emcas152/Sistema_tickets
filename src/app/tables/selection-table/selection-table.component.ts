@@ -25,7 +25,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
     selector: 'app-selection',
     templateUrl: './selection-table.component.html',
-    styleUrls: ['./selection-table.component.scss']
+    styleUrls: ['./selection-table.component.scss'],
+    standalone: false
 })
 
 export class SelectionTableComponent {

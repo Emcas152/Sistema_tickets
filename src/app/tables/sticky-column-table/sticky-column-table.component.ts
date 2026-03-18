@@ -23,7 +23,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
     selector: 'app-sticky-column',
     templateUrl: './sticky-column-table.component.html',
-    styleUrls: ['./sticky-column-table.component.scss']
+    styleUrls: ['./sticky-column-table.component.scss'],
+    standalone: false
 })
 
 export class StickycolumnTableComponent {

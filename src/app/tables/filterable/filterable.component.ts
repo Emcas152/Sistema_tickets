@@ -29,7 +29,8 @@ const ELEMENT_DATA: Element[] = [
 @Component({
     selector: 'app-basictable',
     templateUrl: './filterable.component.html',
-    styleUrls: ['./filterable.component.scss']
+    styleUrls: ['./filterable.component.scss'],
+    standalone: false
 })
 export class FilterableComponent {
     constructor(breakpointObserver: BreakpointObserver) {

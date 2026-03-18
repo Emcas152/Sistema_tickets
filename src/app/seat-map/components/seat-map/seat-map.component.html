@@ -1,0 +1,53 @@
+<ng-container *ngIf="event as currentEvent; else loadingState">
+  <app-page-header
+    [title]="'Selecciona tus asientos para ' + currentEvent.title"
+    [subtitle]="currentEvent.venue + ' · ' + (currentEvent.startsAt | date: 'medium')">
+  </app-page-header>
+
+  <div class="reservation-banner" *ngIf="(remainingLabel$ | async) as remainingLabel">
+    <mat-icon>schedule</mat-icon>
+    <span>Tu reserva temporal expira en {{ remainingLabel }}</span>
+  </div>
+
+  <div class="seat-map-layout">
+    <section class="seat-map-panel">
+      <div class="legend">
+        <span class="legend-item"><i class="seat seat-available"></i> Disponible</span>
+        <span class="legend-item"><i class="seat seat-reserved"></i> Reservado</span>
+        <span class="legend-item"><i class="seat seat-sold"></i> Vendido</span>
+        <span class="legend-item"><i class="seat seat-selected"></i> Seleccionado</span>
+      </div>
+
+      <div class="zone-card" *ngFor="let zone of currentEvent.seatMap">
+        <div class="zone-header">
+          <div>
+            <h3>{{ zone.name }}</h3>
+            <small>Q{{ zone.price }} por asiento</small>
+          </div>
+          <span class="zone-dot" [style.background]="zone.color"></span>
+        </div>
+
+        <div class="seat-grid">
+          <button
+            type="button"
+            *ngFor="let seat of zone.seats"
+            [class]="seatClass(seat.status)"
+            (click)="selectSeat(zone, seat)">
+            {{ seat.label }}
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <aside>
+      <app-cart title="Resumen de compra"></app-cart>
+    </aside>
+  </div>
+</ng-container>
+
+<ng-template #loadingState>
+  <app-empty-state
+    title="Cargando mapa del recinto"
+    message="Estamos consultando la disponibilidad más reciente para mostrarte el mapa interactivo.">
+  </app-empty-state>
+</ng-template>

@@ -1,0 +1,40 @@
+<mat-card class="cart-card">
+  <mat-card-content>
+    <div class="cart-header">
+      <div>
+        <h3>{{ title }}</h3>
+        <small>Reserva activa: {{ remainingMinutes$ | async }}</small>
+      </div>
+      <a mat-button color="primary" routerLink="/cart">Ver carrito</a>
+    </div>
+
+    <ng-container *ngIf="state$ | async as state">
+      <div class="cart-line" *ngFor="let item of state.items">
+        <div>
+          <strong>{{ item.seatLabel }}</strong>
+          <span>{{ item.zoneName }}</span>
+        </div>
+        <div class="cart-actions">
+          <b>Q{{ item.price }}</b>
+          <button mat-icon-button type="button" (click)="removeSeat(item.seatId)">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <app-empty-state
+        *ngIf="!state.items.length"
+        title="Sin asientos seleccionados"
+        message="Elige tus localidades en el mapa y aquí verás el resumen de la compra.">
+      </app-empty-state>
+
+      <div class="cart-footer" *ngIf="state.items.length">
+        <div>
+          <span>Total</span>
+          <strong>Q{{ state.total }}</strong>
+        </div>
+        <a mat-flat-button color="primary" [routerLink]="['/checkout', state.eventId]">Continuar a pago</a>
+      </div>
+    </ng-container>
+  </mat-card-content>
+</mat-card>

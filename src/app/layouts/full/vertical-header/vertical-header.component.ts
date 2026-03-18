@@ -3,9 +3,10 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-vertical-header',
-  templateUrl: './vertical-header.component.html',
-  styleUrls: []
+    selector: 'app-vertical-header',
+    templateUrl: './vertical-header.component.html',
+    styleUrls: [],
+    standalone: false
 })
 
 export class VerticalAppHeaderComponent {

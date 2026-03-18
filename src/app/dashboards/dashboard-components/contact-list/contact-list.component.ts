@@ -88,9 +88,10 @@ const ELEMENT_DATA: Element[] = [
 ];
 
 @Component({
-  selector: 'app-contact-list',
-  templateUrl: './contact-list.component.html',
-  styleUrls: ['./contact-list.component.scss']
+    selector: 'app-contact-list',
+    templateUrl: './contact-list.component.html',
+    styleUrls: ['./contact-list.component.scss'],
+    standalone: false
 })
 export class ContactListComponent implements AfterViewInit {
 

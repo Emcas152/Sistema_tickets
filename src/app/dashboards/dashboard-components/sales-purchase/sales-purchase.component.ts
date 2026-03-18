@@ -34,7 +34,8 @@ export interface inexpu2chartOptions {
 @Component({
     selector: 'app-sales-purchase',
     templateUrl: './sales-purchase.component.html',
-    styleUrls: ['./sales-purchase.component.scss']
+    styleUrls: ['./sales-purchase.component.scss'],
+    standalone: false
 })
 export class SalesPurchaseComponent implements OnInit {
 
@@ -64,8 +65,7 @@ export class SalesPurchaseComponent implements OnInit {
             plotOptions: {
                 bar: {
                     horizontal: false,
-                    columnWidth: '60%',
-                    endingShape: 'flat'
+                    columnWidth: '60%'
                 },
             },
             dataLabels: {

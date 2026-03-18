@@ -7,7 +7,8 @@ import { Transaction } from '../footerrow-table/footerrow-table.component';
 @Component({
     selector: 'app-multiple-headerfooter',
     templateUrl: './multiple-header-footer.component.html',
-    styleUrls: ['./multiple-header-footer.component.scss']
+    styleUrls: ['./multiple-header-footer.component.scss'],
+    standalone: false
 })
 
 export class MultipleheaderfooterTableComponent {

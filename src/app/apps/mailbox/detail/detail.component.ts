@@ -7,7 +7,8 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 @Component({
     selector: 'app-maildetail',
     templateUrl: './detail.component.html',
-    styleUrls: ['./detail.component.css']
+    styleUrls: ['./detail.component.css'],
+    standalone: false
 })
 export class DetailComponent implements OnInit {
     // tslint:disable-next-line: no-shadowed-variable

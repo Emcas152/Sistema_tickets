@@ -13,9 +13,10 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { HorizontalMenuItems } from '../../../shared/menu-items/horizontal-menu-items';
 
 @Component({
-  selector: 'app-horizontal-sidebar',
-  templateUrl: './horizontal-sidebar.component.html',
-  styleUrls: []
+    selector: 'app-horizontal-sidebar',
+    templateUrl: './horizontal-sidebar.component.html',
+    styleUrls: [],
+    standalone: false
 })
 
 export class HorizontalAppSidebarComponent implements OnDestroy {

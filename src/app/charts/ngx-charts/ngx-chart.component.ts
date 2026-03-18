@@ -3,9 +3,10 @@ import * as shape from 'd3-shape';
 import { single, multi, generateData } from './chartData';
 
 @Component({
-  selector: 'app-ngxchart',
-  templateUrl: './ngx-chart.component.html',
-  styleUrls: ['./ngx-chart.component.scss']
+    selector: 'app-ngxchart',
+    templateUrl: './ngx-chart.component.html',
+    styleUrls: ['./ngx-chart.component.scss'],
+    standalone: false
 })
 export class NgxchartComponent {
   single: any[]=[];

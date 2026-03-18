@@ -7,7 +7,8 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 @Component({
     selector: 'app-dashboard2',
     templateUrl: './dashboard2.component.html',
-    styleUrls: ['./dashboard2.component.scss']
+    styleUrls: ['./dashboard2.component.scss'],
+    standalone: false
 })
 export class Dashboard2Component {
     // This is for the table responsive

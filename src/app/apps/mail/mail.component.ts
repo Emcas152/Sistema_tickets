@@ -38,7 +38,8 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
             </div>
         </div>
     </form>
-  `
+  `,
+    standalone: false
 })
 
 export class DialogDataExampleDialogComponent {
@@ -49,7 +50,8 @@ export class DialogDataExampleDialogComponent {
     selector: 'app-mail',
     templateUrl: './mail.component.html',
     styleUrls: ['./mail.component.scss'],
-    providers: [MailService]
+    providers: [MailService],
+    standalone: false
 })
 export class MailComponent implements OnInit {
     private mediaMatcher: MediaQueryList = matchMedia(`(max-width: 960px)`);

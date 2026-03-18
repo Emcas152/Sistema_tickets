@@ -7,7 +7,7 @@ import { DemoMaterialModule } from '../demo-material-module';
 import { CdkTableModule } from '@angular/cdk/table';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 
 import { MaterialRoutes } from './material.routing';
 import { ButtonsComponent } from './buttons/buttons.component';
@@ -43,9 +43,7 @@ import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
         FlexLayoutModule,
         CdkTableModule
     ],
-    providers: [
-    ],
-    entryComponents: [DialogOverviewExampleDialogComponent],
+    providers: [],
     declarations: [
         ButtonsComponent,
         BadgeComponent,

@@ -8,7 +8,8 @@ export interface Transaction {
 @Component({
     selector: 'app-footerrowtable',
     templateUrl: './footerrow-table.component.html',
-    styleUrls: ['./footerrow-table.component.scss']
+    styleUrls: ['./footerrow-table.component.scss'],
+    standalone: false
 })
 
 export class FooterrowTableComponent {

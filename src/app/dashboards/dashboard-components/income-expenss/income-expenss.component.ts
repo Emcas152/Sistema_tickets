@@ -32,9 +32,10 @@ export interface inexpuchartOptions {
 }
 
 @Component({
-  selector: 'app-income-expenss',
-  templateUrl: './income-expenss.component.html',
-  styleUrls: ['./income-expenss.component.scss']
+    selector: 'app-income-expenss',
+    templateUrl: './income-expenss.component.html',
+    styleUrls: ['./income-expenss.component.scss'],
+    standalone: false
 })
 export class IncomeExpenssComponent implements OnInit {
 
@@ -64,8 +65,7 @@ export class IncomeExpenssComponent implements OnInit {
       plotOptions: {
         bar: {
           horizontal: false,
-          columnWidth: '60%',
-          endingShape: 'flat'
+          columnWidth: '60%'
         },
       },
       dataLabels: {

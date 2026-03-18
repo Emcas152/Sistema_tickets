@@ -15,9 +15,10 @@ import { PerfectScrollbarConfigInterface, PerfectScrollbarDirective } from 'ngx-
 
 /** @title Responsive sidenav */
 @Component({
-  selector: 'app-full-layout',
-  templateUrl: 'full.component.html',
-  styleUrls: []
+    selector: 'app-full-layout',
+    templateUrl: 'full.component.html',
+    styleUrls: [],
+    standalone: false
 })
 export class FullComponent implements OnDestroy {
   mobileQuery: MediaQueryList;

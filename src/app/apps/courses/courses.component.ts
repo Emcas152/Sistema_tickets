@@ -5,7 +5,8 @@ import { course } from './course';
 @Component({
     selector: 'app-courses',
     templateUrl: './courses.component.html',
-    styleUrls: ['./courses.component.scss']
+    styleUrls: ['./courses.component.scss'],
+    standalone: false
 })
 export class CoursesComponent implements OnInit {
 

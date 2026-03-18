@@ -10,13 +10,33 @@ export const AppRoutes: Routes = [
         children: [
             {
                 path: '',
-                redirectTo: '/dashboards/dashboard1',
+                redirectTo: '/events',
                 pathMatch: 'full'
             },
              {
                 path: 'dashboard',
-                redirectTo: '/dashboards/dashboard1',
+                redirectTo: '/events',
                 pathMatch: 'full'
+            },
+            {
+                path: 'events',
+                loadChildren: () => import('./events/events.module').then(m => m.EventsModule)
+            },
+            {
+                path: 'seat-map',
+                loadChildren: () => import('./seat-map/seat-map.module').then(m => m.SeatMapModule)
+            },
+            {
+                path: 'cart',
+                loadChildren: () => import('./cart/cart.module').then(m => m.CartModule)
+            },
+            {
+                path: 'checkout',
+                loadChildren: () => import('./checkout/checkout.module').then(m => m.CheckoutModule)
+            },
+            {
+                path: 'tickets',
+                loadChildren: () => import('./tickets/tickets.module').then(m => m.TicketsModule)
             },
             {
                 path: 'dashboards',
@@ -69,9 +89,13 @@ export const AppRoutes: Routes = [
         component: AppBlankComponent,
         children: [
             {
+                path: 'auth',
+                loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+            },
+            {
                 path: 'authentication',
-                loadChildren:
-                    () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)
+                redirectTo: 'auth/login',
+                pathMatch: 'full'
             }
         ]
     },

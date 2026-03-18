@@ -33,7 +33,8 @@ export interface ticketstatus {
 
 
 @Component({
-  templateUrl: './ticketdetails.component.html'
+    templateUrl: './ticketdetails.component.html',
+    standalone: false
 })
 export class TicketdetailsComponent implements AfterViewInit {
   @ViewChild('ticket-chart') chart2: ChartComponent = Object.create(null);

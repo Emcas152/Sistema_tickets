@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { TranslateService } from '@ngx-translate/core';
 @Component({
-  selector: 'app-horizontal-header',
-  templateUrl: './horizontal-header.component.html',
-  styleUrls: []
+    selector: 'app-horizontal-header',
+    templateUrl: './horizontal-header.component.html',
+    styleUrls: [],
+    standalone: false
 })
 export class HorizontalAppHeaderComponent {
   public config: PerfectScrollbarConfigInterface = {};

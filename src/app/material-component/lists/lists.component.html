@@ -30,9 +30,11 @@
         <mat-card-title>List with selection</mat-card-title>
         <mat-card-subtitle>A selection list provides an interface for selecting values, where each list item is an option.</mat-card-subtitle>
         <mat-selection-list #shoes>
-          <mat-list-option *ngFor="let shoe of typesOfShoes">
-            {{shoe}}
-          </mat-list-option>
+          @for (shoe of typesOfShoes; track shoe) {
+            <mat-list-option>
+              {{shoe}}
+            </mat-list-option>
+          }
         </mat-selection-list>
         <p>
           Options selected: {{shoes.selectedOptions.selected.length}}
@@ -46,11 +48,13 @@
         <mat-card-title>Multiline lists</mat-card-title>
         <mat-card-subtitle>A selection list provides an interface for selecting values, where each list item is an option.</mat-card-subtitle>
         <mat-list>
-          <mat-list-item *ngFor="let message of messages">
-            <h3 matLine>{{message.from}}</h3>
-            <p matLine class="text-muted">{{message.subject}}</p>
-            <p matLine class="text-muted">{{message.content}}</p>
-          </mat-list-item>
+          @for (message of messages; track message) {
+            <mat-list-item>
+              <h3 matLine>{{message.from}}</h3>
+              <p matLine class="text-muted">{{message.subject}}</p>
+              <p matLine class="text-muted">{{message.content}}</p>
+            </mat-list-item>
+          }
         </mat-list>
       </mat-card-content>
     </mat-card>
@@ -66,11 +70,13 @@
         <mat-card-title>Multiline lists</mat-card-title>
         <mat-card-subtitle>A selection list provides an interface for selecting values, where each list item is an option.</mat-card-subtitle>
         <mat-list>
-          <mat-list-item *ngFor="let message of messages">
-            <img mat-list-avatar [src]="message.image" alt="Image of {{message.from}}">
-            <h3 matLine>{{message.from}}</h3>
-            <p matLine class="text-muted">{{message.content}}</p>
-          </mat-list-item>
+          @for (message of messages; track message) {
+            <mat-list-item>
+              <img mat-list-avatar [src]="message.image" alt="Image of {{message.from}}">
+              <h3 matLine>{{message.from}}</h3>
+              <p matLine class="text-muted">{{message.content}}</p>
+            </mat-list-item>
+          }
         </mat-list>
       </mat-card-content>
     </mat-card>
@@ -89,21 +95,25 @@
       <mat-list>
         <mat-card-content class="p-t-0">
           <h3 mat-subheader>Folders</h3>
-          <mat-list-item *ngFor="let folder of folders">
-            <mat-icon mat-list-icon>folder</mat-icon>
-            <h4 mat-line>{{folder.name}}</h4>
-            <p mat-line> {{folder.updated | date}} </p>
-          </mat-list-item>
+          @for (folder of folders; track folder) {
+            <mat-list-item>
+              <mat-icon mat-list-icon>folder</mat-icon>
+              <h4 mat-line>{{folder.name}}</h4>
+              <p mat-line> {{folder.updated | date}} </p>
+            </mat-list-item>
+          }
         </mat-card-content>
 
         <mat-divider></mat-divider>
         <mat-card-content>
           <h3 mat-subheader>Notes</h3>
-          <mat-list-item *ngFor="let note of notes">
-            <mat-icon mat-list-icon>note</mat-icon>
-            <h4 mat-line>{{note.name}}</h4>
-            <p mat-line> {{note.updated | date}} </p>
-          </mat-list-item>
+          @for (note of notes; track note) {
+            <mat-list-item>
+              <mat-icon mat-list-icon>note</mat-icon>
+              <h4 mat-line>{{note.name}}</h4>
+              <p mat-line> {{note.updated | date}} </p>
+            </mat-list-item>
+          }
         </mat-card-content>
       </mat-list>
 

@@ -13,21 +13,9 @@
       <!-- ============================================================== -->
       <div class="navbar-header">
         <a class="navbar-brand" href="/">
-          <!-- Logo icon -->
-          <b>
-            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-            <!-- Dark Logo icon -->
-            <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo">
-            <!-- Light Logo icon -->
-            <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo">
-          </b>
-          <!--End Logo icon -->
-          <!-- Logo text -->
-          <span fxShow="false" fxShow.gt-xs>
-            <!-- dark Logo text -->
-            <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo">
-            <!-- Light Logo text -->
-            <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage">
+          <b class="brand-mark">AP</b>
+          <span fxShow="false" fxShow.gt-xs class="brand-text">
+            Alcon Producciones
           </span>
         </a>
       </div>
@@ -54,13 +42,14 @@
       <!-- ============================================================== -->
       <!-- app header component - style you can find in header.scss / header.component.ts-->
       <!-- ============================================================== -->
-      <div *ngIf="!horizontal else horizontalheader">
-        <app-vertical-header></app-vertical-header>
-      </div>
-
-      <ng-template #horizontalheader>
+      @if (!horizontal) {
+        <div>
+          <app-vertical-header></app-vertical-header>
+        </div>
+      } @else {
         <app-horizontal-header></app-horizontal-header>
-      </ng-template>
+      }
+
 
       <!-- ============================================================== -->
       <!-- Right sidebar toggle - style you can find in rightsidebar.component.scss -->
@@ -83,13 +72,14 @@
       [opened]="mobileQuery.matches" [disableClose]="mobileQuery.matches" (open)="sidebarOpened = true"
       (close)="sidebarOpened = false">
 
-      <perfect-scrollbar *ngIf="!horizontal; else horizontalsidebar" class="scbar" [config]="config">
-        <app-vertical-sidebar class="app-sidebar"></app-vertical-sidebar>
-      </perfect-scrollbar>
-
-      <ng-template #horizontalsidebar>
+      @if (!horizontal) {
+        <perfect-scrollbar class="scbar" [config]="config">
+          <app-vertical-sidebar class="app-sidebar"></app-vertical-sidebar>
+        </perfect-scrollbar>
+      } @else {
         <app-horizontal-sidebar></app-horizontal-sidebar>
-      </ng-template>
+      }
+
 
 
     </mat-sidenav>
@@ -104,19 +94,23 @@
         <mat-nav-list>
 
           <h3 mat-subheader class="text-uppercase font-weight-bold">Settings</h3>
-          <mat-list-item *ngIf="!minisidebar">
-            <mat-slide-toggle color="warn" [(ngModel)]="horizontal">
+          @if (!minisidebar) {
+            <mat-list-item>
+              <mat-slide-toggle color="warn" [(ngModel)]="horizontal">
               Horizontal Layout</mat-slide-toggle>
-          </mat-list-item>
+            </mat-list-item>
+          }
           <mat-list-item>
             <mat-slide-toggle color="warn" (change)="dir = (dir == 'rtl' ? 'ltr' : 'rtl')">RTL</mat-slide-toggle>
           </mat-list-item>
           <mat-list-item>
             <mat-slide-toggle color="warn" [(ngModel)]="boxed">Boxed Layout</mat-slide-toggle>
           </mat-list-item>
-          <mat-list-item *ngIf="!horizontal">
-            <mat-slide-toggle [(ngModel)]="minisidebar">Mini Sidebar</mat-slide-toggle>
-          </mat-list-item>
+          @if (!horizontal) {
+            <mat-list-item>
+              <mat-slide-toggle [(ngModel)]="minisidebar">Mini Sidebar</mat-slide-toggle>
+            </mat-list-item>
+          }
           <mat-divider></mat-divider>
           <h3 mat-subheader class="text-uppercase font-weight-bold">Colors</h3>
           <mat-list-item>
@@ -125,7 +119,7 @@
           </mat-list-item>
           <mat-list-item>
             <mat-checkbox color="warn" [(ngModel)]="green" (change)="danger = blue = false" class="text-megna">Teal
-              Green</mat-checkbox>
+            Green</mat-checkbox>
           </mat-list-item>
           <mat-list-item>
             <mat-checkbox color="warn" [(ngModel)]="blue" (change)="green = danger = false" class="text-info">Blue

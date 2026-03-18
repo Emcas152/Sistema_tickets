@@ -29,7 +29,8 @@ const ELEMENT_DATA: Element[] = [
 @Component({
     selector: 'app-basictable',
     templateUrl: './pagination.component.html',
-    styleUrls: ['./pagination.component.scss']
+    styleUrls: ['./pagination.component.scss'],
+    standalone: false
 })
 export class PaginationComponent implements AfterViewInit {
     displayedColumns = ['position', 'name', 'weight', 'symbol'];

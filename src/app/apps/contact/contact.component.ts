@@ -16,7 +16,8 @@ export interface ContactData {
 }
 
 @Component({
-    templateUrl: './contact.component.html'
+    templateUrl: './contact.component.html',
+    standalone: false
 })
 export class ContactComponent implements OnInit {
 
@@ -134,6 +135,7 @@ export class ContactComponent implements OnInit {
     // tslint:disable-next-line: component-selector
     selector: 'dialog-content',
     templateUrl: 'dialog-content.html',
+    standalone: false
 })
 // tslint:disable-next-line: component-class-suffix
 export class DialogContent {

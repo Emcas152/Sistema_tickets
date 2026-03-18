@@ -6,16 +6,17 @@ import {
   Validators,
   FormControl
 } from '@angular/forms';
-import { CustomValidators } from 'ngx-custom-validators';
+import { CustomValidators } from '../../shared/validators/custom-validators';
 
 
 const password = new FormControl('', Validators.required);
 const confirmPassword = new FormControl('', CustomValidators.equalTo(password));
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+    selector: 'app-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.scss'],
+    standalone: false
 })
 export class RegisterComponent implements OnInit {
   public form: FormGroup = Object.create(null);
@@ -25,7 +26,7 @@ export class RegisterComponent implements OnInit {
     this.form = this.fb.group({
       email: [
         null,
-        Validators.compose([Validators.required, CustomValidators.email])
+        Validators.compose([Validators.required, Validators.email])
       ],
       password: password,
       confirmPassword: confirmPassword

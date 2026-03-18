@@ -8,7 +8,8 @@ import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 @Component({
     selector: 'app-http-table',
     templateUrl: './http-table.component.html',
-    styleUrls: ['./http-table.component.scss']
+    styleUrls: ['./http-table.component.scss'],
+    standalone: false
 })
 export class HttptableComponent implements AfterViewInit {
     displayedColumns: string[] = ['created', 'state', 'number', 'title'];

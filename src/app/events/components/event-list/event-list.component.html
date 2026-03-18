@@ -1,0 +1,42 @@
+<app-page-header
+  title="Eventos destacados"
+  subtitle="Selecciona un evento, explora el mapa del recinto y asegura tus asientos antes de que se agoten.">
+</app-page-header>
+
+<mat-card class="filters-card">
+  <mat-card-content>
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Buscar evento, ciudad o venue</mat-label>
+      <input matInput [formControl]="searchControl" placeholder="Ej. Tour acústico, Guatemala, Fórum" />
+    </mat-form-field>
+  </mat-card-content>
+</mat-card>
+
+<div class="event-grid" *ngIf="events.length; else emptyState">
+  <mat-card class="event-card" *ngFor="let event of events">
+    <img mat-card-image [src]="event.heroImage" [alt]="event.title" />
+    <mat-card-content>
+      <span class="pill">Desde Q{{ event.minPrice }}</span>
+      <h3>{{ event.title }}</h3>
+      <p>{{ event.venue }} · {{ event.city }}</p>
+      <small>{{ event.startsAt | date: 'fullDate' }}</small>
+    </mat-card-content>
+    <mat-card-actions>
+      <a mat-button color="primary" [routerLink]="['/events', event.id]">Ver detalle</a>
+      <a mat-flat-button color="primary" [routerLink]="['/seat-map', event.id]">Comprar</a>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<div class="pagination">
+  <button mat-stroked-button type="button" (click)="goToPage(1)">1</button>
+  <button mat-stroked-button type="button" (click)="goToPage(2)">2</button>
+  <button mat-stroked-button type="button" (click)="goToPage(3)">3</button>
+</div>
+
+<ng-template #emptyState>
+  <app-empty-state
+    title="No encontramos eventos"
+    message="Intenta con otro término de búsqueda o vuelve más tarde para revisar la cartelera actualizada.">
+  </app-empty-state>
+</ng-template>

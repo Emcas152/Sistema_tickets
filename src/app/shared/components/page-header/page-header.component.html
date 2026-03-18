@@ -1,0 +1,10 @@
+<div class="page-header">
+  <div>
+    <h1>{{ title }}</h1>
+    <p *ngIf="subtitle">{{ subtitle }}</p>
+  </div>
+
+  <a *ngIf="actionLabel && actionLink" mat-flat-button color="primary" [routerLink]="actionLink">
+    {{ actionLabel }}
+  </a>
+</div>

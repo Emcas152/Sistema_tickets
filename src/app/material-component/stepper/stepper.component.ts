@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-stepper',
-  templateUrl: './stepper.component.html',
-  styleUrls: ['./stepper.component.scss']
+    selector: 'app-stepper',
+    templateUrl: './stepper.component.html',
+    styleUrls: ['./stepper.component.scss'],
+    standalone: false
 })
 export class StepperComponent implements OnInit {
   isLinear = false;
-  firstFormGroup: FormGroup = Object.create(null);
-  secondFormGroup: FormGroup = Object.create(null);
+  firstFormGroup: UntypedFormGroup = Object.create(null);
+  secondFormGroup: UntypedFormGroup = Object.create(null);
   isOptional = false;
   isEditable = false;
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: UntypedFormBuilder) { }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({

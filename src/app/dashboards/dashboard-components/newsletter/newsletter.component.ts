@@ -33,7 +33,8 @@ export interface newsletterchartOptions {
 @Component({
     selector: 'app-newsletter',
     templateUrl: './newsletter.component.html',
-    styleUrls: ['./newsletter.component.scss']
+    styleUrls: ['./newsletter.component.scss'],
+    standalone: false
 })
 export class NewsletterComponent implements OnInit {
 

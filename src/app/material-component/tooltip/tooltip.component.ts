@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions, TooltipPosition } from '@angular/material/tooltip';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 /** Custom options the configure the tooltip's default show/hide delays. */
 export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
@@ -18,18 +18,19 @@ export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
     providers: [
         { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: myCustomTooltipDefaults }
     ],
+    standalone: false
 })
 export class TooltipComponent {
     positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
-    position = new FormControl(this.positionOptions[0]);
+    position = new UntypedFormControl(this.positionOptions[0]);
 
-    showDelay = new FormControl(1000);
-    hideDelay = new FormControl(2000);
+    showDelay = new UntypedFormControl(1000);
+    hideDelay = new UntypedFormControl(2000);
 
-    disabled = new FormControl(false);
+    disabled = new UntypedFormControl(false);
 
-    message = new FormControl('Info about the action');
+    message = new UntypedFormControl('Info about the action');
 
 
-    position1 = new FormControl(this.positionOptions[0]);
+    position1 = new UntypedFormControl(this.positionOptions[0]);
 }

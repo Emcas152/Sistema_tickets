@@ -1,0 +1,25 @@
+<div class="auth-shell">
+  <mat-card class="auth-card">
+    <mat-card-content>
+      <span class="eyebrow">alconproducciones.com</span>
+      <h1>Accede para continuar tu compra</h1>
+      <p>Gestiona reservas, pagos y descarga tus tickets desde un solo lugar.</p>
+
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input matInput formControlName="password" type="password" />
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" class="w-100" type="submit" [disabled]="isSubmitting">
+          {{ isSubmitting ? 'Ingresando...' : 'Ingresar' }}
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

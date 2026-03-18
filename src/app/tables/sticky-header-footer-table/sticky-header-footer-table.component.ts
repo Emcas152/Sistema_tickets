@@ -28,7 +28,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
     selector: 'app-sticky-header-footer',
     templateUrl: './sticky-header-footer-table.component.html',
-    styleUrls: ['./sticky-header-footer-table.component.scss']
+    styleUrls: ['./sticky-header-footer-table.component.scss'],
+    standalone: false
 })
 
 export class StickyheaderfooterTableComponent {

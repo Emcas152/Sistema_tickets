@@ -12,7 +12,8 @@ export interface Dessert {
 @Component({
     selector: 'app-sortheader',
     templateUrl: './sortheader.component.html',
-    styleUrls: ['./sortheader.component.scss']
+    styleUrls: ['./sortheader.component.scss'],
+    standalone: false
 })
 export class SortheaderComponent {
     desserts: Dessert[] = [

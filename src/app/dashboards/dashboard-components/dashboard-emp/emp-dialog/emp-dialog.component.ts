@@ -4,9 +4,10 @@ import { DatePipe } from '@angular/common';
 import {Employee} from '../dashboard-emp.component';
 
 @Component({
-  selector: 'app-emp-dialog',
-  templateUrl: './emp-dialog.component.html',
-  styleUrls: ['./emp-dialog.component.scss']
+    selector: 'app-emp-dialog',
+    templateUrl: './emp-dialog.component.html',
+    styleUrls: ['./emp-dialog.component.scss'],
+    standalone: false
 })
 export class EmpDialogComponent  {
   action: string;

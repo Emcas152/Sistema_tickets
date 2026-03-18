@@ -24,23 +24,25 @@
   </mat-card-content>
 </mat-card>
 <div fxLayout="row wrap" class="course-app">
-  <div fxFlex.gt-md="33.33" fxFlex.gt-lg="33.33" fxFlex="100" *ngFor='let course of courseList'>
-    <mat-card>
-      <mat-card-header class="course-header {{course.courseType}}">
-        <mat-card-title>
-          <span class="course-name">{{course.courseType}}</span>
-          <span class="course-duration">
-            <mat-icon class="m-r-10">access_time</mat-icon>{{course.Time}}
-          </span>
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content class="text-center">
-        <p class="m-b-5">{{course.courseName}}</p>
-        <small>{{course.Update}}</small>
-      </mat-card-content>
-      <mat-card-actions class="text-center">
-        <button mat-button>Start</button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
+  @for (course of courseList; track course) {
+    <div fxFlex.gt-md="33.33" fxFlex.gt-lg="33.33" fxFlex="100">
+      <mat-card>
+        <mat-card-header class="course-header {{course.courseType}}">
+          <mat-card-title>
+            <span class="course-name">{{course.courseType}}</span>
+            <span class="course-duration">
+              <mat-icon class="m-r-10">access_time</mat-icon>{{course.Time}}
+            </span>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="text-center">
+          <p class="m-b-5">{{course.courseName}}</p>
+          <small>{{course.Update}}</small>
+        </mat-card-content>
+        <mat-card-actions class="text-center">
+          <button mat-button>Start</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  }
 </div>

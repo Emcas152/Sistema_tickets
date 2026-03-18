@@ -13,7 +13,8 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 <div mat-dialog-actions>
   <button mat-button [mat-dialog-close]="data.animal" tabindex="2">Ok</button>
   <button mat-button (click)="onNoClick()" tabindex="-1">No Thanks</button>
-</div>`
+</div>`,
+    standalone: false
 })
 export class DialogOverviewExampleDialogComponent {
     constructor(
@@ -29,7 +30,8 @@ export class DialogOverviewExampleDialogComponent {
 @Component({
     selector: 'app-dialog',
     templateUrl: './dialog.component.html',
-    styleUrls: ['./dialog.component.scss']
+    styleUrls: ['./dialog.component.scss'],
+    standalone: false
 })
 export class DialogComponent {
     animal = '';

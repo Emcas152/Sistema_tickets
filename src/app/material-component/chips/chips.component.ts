@@ -9,7 +9,8 @@ export interface DemoColor {
 @Component({
     selector: 'app-chips',
     templateUrl: './chips.component.html',
-    styleUrls: ['./chips.component.scss']
+    styleUrls: ['./chips.component.scss'],
+    standalone: false
 })
 export class ChipsComponent {
     visible = true;

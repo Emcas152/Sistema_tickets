@@ -33,9 +33,10 @@ export interface ChartOptions {
 
 
 @Component({
-  selector: 'app-sales-yearly',
-  templateUrl: './sales-yearly.component.html',
-  styleUrls: ['./sales-yearly.component.scss']
+    selector: 'app-sales-yearly',
+    templateUrl: './sales-yearly.component.html',
+    styleUrls: ['./sales-yearly.component.scss'],
+    standalone: false
 })
 export class SalesYearlyComponent implements OnInit {
   @ViewChild('chart') chart: ChartComponent = Object.create(null);
@@ -64,8 +65,7 @@ export class SalesYearlyComponent implements OnInit {
       plotOptions: {
         bar: {
           horizontal: false,
-          columnWidth: '40%',
-          endingShape: 'flat'
+          columnWidth: '40%'
         },
 
       },

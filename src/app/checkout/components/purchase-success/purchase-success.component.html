@@ -1,0 +1,13 @@
+<mat-card class="success-card">
+  <mat-card-content>
+    <mat-icon>verified</mat-icon>
+    <h1>Compra completada</h1>
+    <p *ngIf="state.eventTitle">Tus entradas para {{ state.eventTitle }} ya fueron confirmadas.</p>
+    <p *ngIf="state.order?.orderId">Orden: {{ state.order?.orderId }}</p>
+
+    <div class="actions">
+      <a mat-flat-button color="primary" routerLink="/tickets/my-tickets">Descargar tickets</a>
+      <a mat-stroked-button color="primary" routerLink="/events">Volver a eventos</a>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { ToDo } from './todo';
 import { TodoService } from './todo.service';
 
 @Component({
     selector: 'app-todo',
     templateUrl: './todo.component.html',
-    styleUrls: ['./todo.component.scss']
+    styleUrls: ['./todo.component.scss'],
+    standalone: false
 })
 export class TodoComponent implements OnInit {
 
     sidePanelOpened = true;
 
     public showSidebar = false;
-    inputFg: FormGroup = Object.create(null);
+    inputFg: UntypedFormGroup = Object.create(null);
     todoId = 6;
     copyTodos: ToDo[];
     /* search: 'all'; */
@@ -23,7 +24,7 @@ export class TodoComponent implements OnInit {
 
     todos: ToDo[] = this.todoService.getTodos();
 
-    constructor(public fb: FormBuilder, public todoService: TodoService) {
+    constructor(public fb: UntypedFormBuilder, public todoService: TodoService) {
         this.copyTodos = this.todos;
     }
 

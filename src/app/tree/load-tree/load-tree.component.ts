@@ -94,7 +94,8 @@ export class LoadmoreDatabase {
     selector: 'app-load-tree',
     templateUrl: './load-tree.component.html',
     styleUrls: ['./load-tree.component.scss'],
-    providers: [LoadmoreDatabase]
+    providers: [LoadmoreDatabase],
+    standalone: false
 })
 export class LoadtreeComponent {
 

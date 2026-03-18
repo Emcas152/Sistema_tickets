@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import {
-  FormControl,
+  UntypedFormControl,
   FormGroupDirective,
   NgForm,
   Validators
@@ -10,7 +10,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
-    control: FormControl | null,
+    control: UntypedFormControl | null,
     form: FormGroupDirective | NgForm | null
   ): boolean {
     const isSubmitted = form && form.submitted;
@@ -49,12 +49,13 @@ export interface PokemonGroup {
 }
 
 @Component({
-  selector: 'app-select',
-  templateUrl: './select.component.html',
-  styleUrls: ['./select.component.scss'],
-  // Encapsulation has to be disabled in order for the
-  // component style to apply to the select panel.
-  encapsulation: ViewEncapsulation.None
+    selector: 'app-select',
+    templateUrl: './select.component.html',
+    styleUrls: ['./select.component.scss'],
+    // Encapsulation has to be disabled in order for the
+    // component style to apply to the select panel.
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class SelectfieldComponent {
   // 1 && 2
@@ -83,8 +84,8 @@ export class SelectfieldComponent {
   ];
 
   // 5
-  animalControl = new FormControl('', [Validators.required]);
-  selectFormControl1 = new FormControl('', Validators.required);
+  animalControl = new UntypedFormControl('', [Validators.required]);
+  selectFormControl1 = new UntypedFormControl('', Validators.required);
   animals: Animal[] = [
     { name: 'Dog', sound: 'Woof!' },
     { name: 'Cat', sound: 'Meow!' },
@@ -93,7 +94,7 @@ export class SelectfieldComponent {
   ];
 
   // 6
-  disableSelect = new FormControl(false);
+  disableSelect = new UntypedFormControl(false);
 
   // 7
   states: string[] = [
@@ -150,7 +151,7 @@ export class SelectfieldComponent {
   ];
 
   // 8
-  pokemonControl = new FormControl();
+  pokemonControl = new UntypedFormControl();
   pokemonGroups: PokemonGroup[] = [
     {
       name: 'Grass',
@@ -187,7 +188,7 @@ export class SelectfieldComponent {
   ];
 
   // 9
-  toppings = new FormControl();
+  toppings = new UntypedFormControl();
   toppingList: string[] = [
     'Extra cheese',
     'Mushroom',
@@ -198,20 +199,20 @@ export class SelectfieldComponent {
   ];
 
   // 10
-  panelColor = new FormControl('red');
+  panelColor = new UntypedFormControl('red');
 
   // 11
-  selected = new FormControl('valid', [
+  selected = new UntypedFormControl('valid', [
     Validators.required,
     Validators.pattern('valid')
   ]);
 
-  selectFormControl = new FormControl('valid', [
+  selectFormControl = new UntypedFormControl('valid', [
     Validators.required,
     Validators.pattern('valid')
   ]);
 
-  nativeSelectFormControl = new FormControl('valid', [
+  nativeSelectFormControl = new UntypedFormControl('valid', [
     Validators.required,
     Validators.pattern('valid')
   ]);

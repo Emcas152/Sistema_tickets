@@ -4,12 +4,76 @@ Author: Themedesigner
 Email: niravjoshi87@gmail.com
 File: scss
 */
+@use 'sass:map';
+@use '@angular/material' as mat;
 // Variables
 
 $bodyfont: 'Poppins', sans-serif;
 $headingfont: 'Poppins', sans-serif;
 
-@import '~@angular/material/theming';
+$mat-blue: mat.$m2-blue-palette;
+$mat-indigo: mat.$m2-indigo-palette;
+$mat-pink: mat.$m2-pink-palette;
+$mat-red: mat.$m2-red-palette;
+$mat-teal: mat.$m2-teal-palette;
+
+@function mat-palette($palette, $default: null, $lighter: null, $darker: null, $text: null) {
+  $is-accent: map.has-key($palette, A200);
+  $resolved-default: if($default == null, if($is-accent, A200, 500), $default);
+  $resolved-lighter: if($lighter == null, if($is-accent, A100, 100), $lighter);
+  $resolved-darker: if($darker == null, if($is-accent, A400, 700), $darker);
+  $resolved-text: if($text == null, $resolved-default, $text);
+
+  @return mat.m2-define-palette(
+    $palette,
+    $resolved-default,
+    $resolved-lighter,
+    $resolved-darker,
+    $resolved-text
+  );
+}
+
+@function mat-color($palette, $hue: default, $opacity: null) {
+  $color: map.get($palette, $hue);
+
+  @if $opacity != null {
+    @return rgba($color, $opacity);
+  }
+
+  @return $color;
+}
+
+@function mat-light-theme($primary, $accent: null, $warn: null) {
+  @return mat.m2-define-light-theme((
+    color: (
+      primary: $primary,
+      accent: $accent,
+      warn: $warn
+    )
+  ));
+}
+
+@function mat-dark-theme($primary, $accent: null, $warn: null) {
+  @return mat.m2-define-dark-theme((
+    color: (
+      primary: $primary,
+      accent: $accent,
+      warn: $warn
+    )
+  ));
+}
+
+@function mat-typography-config($font-family: null) {
+  @return mat.m2-define-typography-config($font-family: $font-family);
+}
+
+@mixin angular-material-theme($theme) {
+  @include mat.all-component-themes($theme);
+}
+
+@mixin mat-core($typography: null) {
+  @include mat.core();
+}
 
 /*Material Theme Colors*/
 
@@ -17,8 +81,8 @@ $primary: mat-palette($mat-blue, 600);
 $accent: mat-palette($mat-indigo, 500);
 $warn: mat-palette($mat-pink, 500);
 $theme: mat-light-theme($primary, $accent, $warn);
-$background: map-get($theme, background);
-$foreground: map-get($theme, foreground);
+$background: map.get(map.get($theme, color), background);
+$foreground: map.get(map.get($theme, color), foreground);
 
 // Default Theme
 @include angular-material-theme($theme);

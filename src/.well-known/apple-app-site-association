@@ -1,0 +1,25 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "REPLACE_WITH_APPLE_TEAM_ID.com.alconproducciones.tickets"
+        ],
+        "components": [
+          {
+            "/": "/events/*"
+          },
+          {
+            "/": "/seat-map/*"
+          },
+          {
+            "/": "/checkout/*"
+          },
+          {
+            "/": "/tickets/*"
+          }
+        ]
+      }
+    ]
+  }
+}

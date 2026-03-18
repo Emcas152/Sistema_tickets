@@ -1,0 +1,29 @@
+<app-page-header
+  title="Mis tickets"
+  subtitle="Consulta tu historial reciente y descarga los boletos con su QR de acceso.">
+</app-page-header>
+
+<div class="tickets-grid" *ngIf="tickets.length; else noTickets">
+  <mat-card class="ticket-card" *ngFor="let ticket of tickets">
+    <mat-card-content>
+      <h3>{{ ticket.eventTitle }}</h3>
+      <p>{{ ticket.seatLabel }}</p>
+      <small>{{ ticket.purchasedAt | date: 'medium' }}</small>
+
+      <div class="ticket-qr">
+        <img [src]="ticket.qrCodeUrl" [alt]="ticket.eventTitle" />
+      </div>
+
+      <a mat-flat-button color="primary" [href]="ticket.downloadUrl" target="_blank">Descargar ticket</a>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<ng-template #noTickets>
+  <app-empty-state
+    title="Aún no tienes tickets"
+    message="Cuando completes una compra, aquí aparecerán tus entradas con enlace de descarga."
+    actionLabel="Ver eventos"
+    actionLink="/events">
+  </app-empty-state>
+</ng-template>

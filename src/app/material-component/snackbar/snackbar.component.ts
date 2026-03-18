@@ -4,7 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
     selector: 'app-snackbar',
     templateUrl: './snackbar.component.html',
-    styleUrls: ['./snackbar.component.scss']
+    styleUrls: ['./snackbar.component.scss'],
+    standalone: false
 })
 export class SnackbarComponent {
     constructor(public snackBar: MatSnackBar) { }

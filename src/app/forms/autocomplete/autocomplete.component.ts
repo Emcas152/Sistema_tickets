@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
+import { UntypedFormControl, UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
 export class State {
@@ -27,22 +27,23 @@ export const _filter = (opt: string[], value: string): string[] => {
 };
 
 @Component({
-  selector: 'app-autocomplete',
-  templateUrl: './autocomplete.component.html',
-  styleUrls: ['./autocomplete.component.scss']
+    selector: 'app-autocomplete',
+    templateUrl: './autocomplete.component.html',
+    styleUrls: ['./autocomplete.component.scss'],
+    standalone: false
 })
 export class AutocompleteComponent implements OnInit {
   // state autocomplate
-  stateCtrl: FormControl;
+  stateCtrl: UntypedFormControl;
   filteredStates: Observable<any[]>;
 
   // 2
-  myControl1 = new FormControl();
+  myControl1 = new UntypedFormControl();
   options: string[] = ['One', 'Two', 'Three'];
 
   // 3
 
-  stateForm: FormGroup = this.fb.group({
+  stateForm: UntypedFormGroup = this.fb.group({
     stateGroup: ''
   });
 
@@ -178,24 +179,24 @@ export class AutocompleteComponent implements OnInit {
 
   // 4
 
-  myControl = new FormControl();
+  myControl = new UntypedFormControl();
   options1: User[] = [{ name: 'Mary' }, { name: 'Shelley' }, { name: 'Igor' }];
   filteredOptions: Observable<User[]> = Object.create(null);
 
   // 5
 
-  myControl2 = new FormControl();
+  myControl2 = new UntypedFormControl();
   options2: string[] = ['One', 'Two', 'Three'];
   filteredOptions1: Observable<string[]> = Object.create(null);
 
   // 6
 
-  highControl = new FormControl();
+  highControl = new UntypedFormControl();
   options3: string[] = ['One', 'Two', 'Three'];
   filteredOptions2: Observable<string[]> = Object.create(null);
 
-  constructor(private fb: FormBuilder) {
-    this.stateCtrl = new FormControl();
+  constructor(private fb: UntypedFormBuilder) {
+    this.stateCtrl = new UntypedFormControl();
     this.filteredStates = this.stateCtrl.valueChanges.pipe(
       startWith(''),
       map(state => (state ? this.filterStates(state) : this.states.slice()))

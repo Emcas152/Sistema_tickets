@@ -1,22 +1,23 @@
 import { Component } from '@angular/core';
 import {
-  FormBuilder,
-  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormGroup,
   Validators,
-  FormControl
+  UntypedFormControl
 } from '@angular/forms';
 
 @Component({
-  selector: 'app-formfield',
-  templateUrl: './formfield.component.html',
-  styleUrls: ['./formfield.component.scss']
+    selector: 'app-formfield',
+    templateUrl: './formfield.component.html',
+    styleUrls: ['./formfield.component.scss'],
+    standalone: false
 })
 export class FormfieldComponent {
-  options: FormGroup;
+  options: UntypedFormGroup;
 
   hide = true;
 
-  constructor(fb: FormBuilder) {
+  constructor(fb: UntypedFormBuilder) {
     this.options = fb.group({
       hideRequired: false,
       floatLabel: 'auto',
@@ -25,7 +26,7 @@ export class FormfieldComponent {
     });
   }
 
-  email = new FormControl('', [Validators.required, Validators.email]);
+  email = new UntypedFormControl('', [Validators.required, Validators.email]);
 
   getErrorMessage() {
     return this.email.hasError('required')

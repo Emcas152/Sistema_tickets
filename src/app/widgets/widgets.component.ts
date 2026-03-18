@@ -3,9 +3,10 @@ import { Component, AfterViewInit } from '@angular/core';
 
 
 @Component({
-  selector: 'app-widgets',
-  templateUrl: './widgets.component.html',
-  styleUrls: ['./widgets.component.scss']
+    selector: 'app-widgets',
+    templateUrl: './widgets.component.html',
+    styleUrls: ['./widgets.component.scss'],
+    standalone: false
 })
 export class WidgetsComponent implements AfterViewInit {
   // Timeline

@@ -2,13 +2,13 @@ import {
   Directive,
   AfterContentChecked
 } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import 'rxjs/add/operator/filter';
+import { Router } from '@angular/router';
 
 import { AccordionLinkDirective } from './accordionlink.directive';
 
 @Directive({
-  selector: '[appAccordion]'
+    selector: '[appAccordion]',
+    standalone: false
 })
 export class AccordionDirective implements AfterContentChecked {
   protected navlinks: Array<AccordionLinkDirective> = [];

@@ -1,23 +1,24 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { FormControl, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-formlayout',
-  templateUrl: './form-layout.component.html',
-  styleUrls: ['./form-layout.component.scss']
+    selector: 'app-formlayout',
+    templateUrl: './form-layout.component.html',
+    styleUrls: ['./form-layout.component.scss'],
+    standalone: false
 })
 export class FormLayoutComponent {
-  options: FormGroup;
+  options: UntypedFormGroup;
 
-  constructor(fb: FormBuilder) {
+  constructor(fb: UntypedFormBuilder) {
     this.options = fb.group({
       hideRequired: false,
       floatLabel: 'auto'
     });
   }
   // For form validator
-  email = new FormControl('', [Validators.required, Validators.email]);
+  email = new UntypedFormControl('', [Validators.required, Validators.email]);
 
   // Sufix and prefix
   hide = true;

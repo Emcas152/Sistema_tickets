@@ -116,7 +116,8 @@ const tickets: TicketElement[] = [
     }
 ];
 @Component({
-    templateUrl: './ticketlist.component.html'
+    templateUrl: './ticketlist.component.html',
+    standalone: false
 })
 
 
@@ -216,6 +217,7 @@ export class TicketlistComponent implements OnInit {
     // tslint:disable-next-line: component-selector
     selector: 'dialog-content',
     templateUrl: 'dialog-content.html',
+    standalone: false
 })
 // tslint:disable-next-line: component-class-suffix
 export class TicketDialogContent {

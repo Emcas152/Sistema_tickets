@@ -1,0 +1,25 @@
+.success-card {
+  border-radius: 24px;
+  max-width: 720px;
+  margin: 48px auto;
+  text-align: center;
+}
+
+.success-card mat-card-content {
+  padding: 42px 32px;
+}
+
+.success-card mat-icon {
+  width: 72px;
+  height: 72px;
+  font-size: 72px;
+  color: #16a34a;
+}
+
+.actions {
+  display: inline-flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}

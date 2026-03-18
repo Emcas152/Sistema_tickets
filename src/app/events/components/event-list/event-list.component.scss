@@ -1,0 +1,45 @@
+.filters-card,
+.event-card {
+  border-radius: 20px;
+}
+
+.filters-card {
+  margin-bottom: 24px;
+}
+
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.event-card img {
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.event-card h3 {
+  margin: 12px 0 8px;
+  font-size: 22px;
+}
+
+.event-card p,
+.event-card small {
+  color: #6b7280;
+}
+
+.pill {
+  display: inline-flex;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #fef3c7;
+  color: #92400e;
+  font-weight: 600;
+}
+
+.pagination {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 24px;
+}

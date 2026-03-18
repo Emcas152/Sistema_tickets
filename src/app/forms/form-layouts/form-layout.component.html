@@ -60,15 +60,15 @@
             <!-- column -->
             <div fxFlex.gt-sm="100" fxFlex="100">
               <mat-form-field [hideRequiredMarker]="options.value.hideRequired" [floatLabel]="options.value.floatLabel">
+                <mat-label>
+                  <mat-icon>favorite</mat-icon>
+                  <b> Fancy</b>
+                  <i> placeholder</i>
+                </mat-label>
                 <mat-select required>
                   <mat-option>-- None --</mat-option>
                   <mat-option value="option">Option</mat-option>
                 </mat-select>
-                <mat-placeholder>
-                  <mat-icon>favorite</mat-icon>
-                  <b> Fancy</b>
-                  <i> placeholder</i>
-                </mat-placeholder>
               </mat-form-field>
             </div>
             <!-- column -->
@@ -108,7 +108,9 @@
         <mat-card-title>Form field with error messages</mat-card-title>
         <mat-form-field>
           <input matInput placeholder="Enter your email" [formControl]="email" required>
-          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          @if (email.invalid) {
+            <mat-error>{{getErrorMessage()}}</mat-error>
+          }
         </mat-form-field>
       </mat-card-content>
     </mat-card>
@@ -145,74 +147,74 @@
         <mat-card-subtitle>use this class
           <code>.row</code> to the fxLayout="row" and
           <code>p-10</code> to the fxFlex div</mat-card-subtitle>
-        <!-- ============================================================== -->
-        <!-- column -->
-        <!-- ============================================================== -->
-        <form class="basic-form">
-          <div fxLayout="row wrap" fxFlexAlign="center" class="row">
-            <!-- column -->
-            <div fxFlex.gt-sm="25" fxFlex="100" class="p-10">
-              <mat-form-field>
-                <input matInput placeholder="grid 25">
-              </mat-form-field>
+          <!-- ============================================================== -->
+          <!-- column -->
+          <!-- ============================================================== -->
+          <form class="basic-form">
+            <div fxLayout="row wrap" fxFlexAlign="center" class="row">
+              <!-- column -->
+              <div fxFlex.gt-sm="25" fxFlex="100" class="p-10">
+                <mat-form-field>
+                  <input matInput placeholder="grid 25">
+                </mat-form-field>
+              </div>
+              <!-- column -->
+              <div fxFlex.gt-sm="25" fxFlex="100" class="p-10">
+                <mat-form-field>
+                  <input matInput placeholder="grid 25">
+                </mat-form-field>
+              </div>
+              <!-- column -->
+              <div fxFlex.gt-sm="25" fxFlex="100" class="p-10">
+                <mat-form-field>
+                  <input matInput placeholder="grid 25">
+                </mat-form-field>
+              </div>
+              <!-- column -->
+              <div fxFlex.gt-sm="25" fxFlex="100" class="p-10">
+                <mat-form-field>
+                  <input matInput placeholder="grid 25">
+                </mat-form-field>
+              </div>
+              <!-- column -->
+              <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+                <mat-form-field>
+                  <input matInput placeholder="grid 33.33">
+                </mat-form-field>
+              </div>
+              <!-- column -->
+              <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+                <mat-form-field>
+                  <input matInput placeholder="grid 33.33">
+                </mat-form-field>
+              </div>
+              <!-- column -->
+              <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
+                <mat-form-field>
+                  <input matInput placeholder="grid 33.33">
+                </mat-form-field>
+              </div>
+              <!-- column -->
+              <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                <mat-form-field>
+                  <input matInput placeholder="grid 50">
+                </mat-form-field>
+              </div>
+              <!-- column -->
+              <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                <mat-form-field>
+                  <input matInput placeholder="grid 50">
+                </mat-form-field>
+              </div>
+              <!-- column -->
+              <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                <mat-form-field>
+                  <input matInput placeholder="grid 100">
+                </mat-form-field>
+              </div>
             </div>
-            <!-- column -->
-            <div fxFlex.gt-sm="25" fxFlex="100" class="p-10">
-              <mat-form-field>
-                <input matInput placeholder="grid 25">
-              </mat-form-field>
-            </div>
-            <!-- column -->
-            <div fxFlex.gt-sm="25" fxFlex="100" class="p-10">
-              <mat-form-field>
-                <input matInput placeholder="grid 25">
-              </mat-form-field>
-            </div>
-            <!-- column -->
-            <div fxFlex.gt-sm="25" fxFlex="100" class="p-10">
-              <mat-form-field>
-                <input matInput placeholder="grid 25">
-              </mat-form-field>
-            </div>
-            <!-- column -->
-            <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
-              <mat-form-field>
-                <input matInput placeholder="grid 33.33">
-              </mat-form-field>
-            </div>
-            <!-- column -->
-            <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
-              <mat-form-field>
-                <input matInput placeholder="grid 33.33">
-              </mat-form-field>
-            </div>
-            <!-- column -->
-            <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10">
-              <mat-form-field>
-                <input matInput placeholder="grid 33.33">
-              </mat-form-field>
-            </div>
-            <!-- column -->
-            <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
-              <mat-form-field>
-                <input matInput placeholder="grid 50">
-              </mat-form-field>
-            </div>
-            <!-- column -->
-            <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
-              <mat-form-field>
-                <input matInput placeholder="grid 50">
-              </mat-form-field>
-            </div>
-            <!-- column -->
-            <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
-              <mat-form-field>
-                <input matInput placeholder="grid 100">
-              </mat-form-field>
-            </div>
-          </div>
-        </form>
-      </mat-card-content>
-    </mat-card>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
-</div>

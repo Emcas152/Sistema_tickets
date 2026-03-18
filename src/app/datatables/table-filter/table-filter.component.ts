@@ -3,9 +3,10 @@ import { Component, ViewChild } from '@angular/core';
 declare var require: any;
 const data: any = require('src/assets/company.json');
 @Component({
-  selector: 'app-table-filter',
-  templateUrl: './table-filter.component.html',
-  styleUrls: ['./table-filter.component.scss']
+    selector: 'app-table-filter',
+    templateUrl: './table-filter.component.html',
+    styleUrls: ['./table-filter.component.scss'],
+    standalone: false
 })
 export class TableFilterComponent {
   editing: any[] = [];

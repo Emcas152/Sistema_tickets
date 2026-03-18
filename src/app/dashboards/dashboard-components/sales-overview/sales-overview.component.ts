@@ -34,7 +34,8 @@ export interface ChartOptions {
 @Component({
     selector: 'app-sales-overview',
     templateUrl: './sales-overview.component.html',
-    styleUrls: ['./sales-overview.component.scss']
+    styleUrls: ['./sales-overview.component.scss'],
+    standalone: false
 })
 export class SalesOverviewComponent implements OnInit {
 
@@ -65,8 +66,7 @@ export class SalesOverviewComponent implements OnInit {
             plotOptions: {
                 bar: {
                     horizontal: false,
-                    columnWidth: '30%',
-                    endingShape: 'flat'
+                    columnWidth: '30%'
                 },
 
             },

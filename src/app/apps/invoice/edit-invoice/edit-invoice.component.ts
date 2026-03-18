@@ -2,21 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceinvoiceService } from '../serviceinvoice.service';
 import { InvoiceList, order } from '../invoice';
-import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormArray, UntypedFormBuilder, Validators } from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
 import {OkDialogComponent} from './ok-dialog/ok-dialog.component';
 
 @Component({
-  selector: 'app-edit-invoice',
-  templateUrl: './edit-invoice.component.html',
-  styleUrls: ['./edit-invoice.component.css']
+    selector: 'app-edit-invoice',
+    templateUrl: './edit-invoice.component.html',
+    styleUrls: ['./edit-invoice.component.css'],
+    standalone: false
 })
 export class EditInvoiceComponent implements OnInit {
 
   id: any;
   invoice: InvoiceList;
 
-  addForm: FormGroup;
+  addForm: UntypedFormGroup;
 
 
   subTotal = 0;
@@ -24,7 +25,7 @@ export class EditInvoiceComponent implements OnInit {
   grandTotal = 0;
 
   constructor(activatedRouter: ActivatedRoute, private invoiceService: ServiceinvoiceService,
-    private router: Router, private fb: FormBuilder,public dialog:MatDialog) {
+    private router: Router, private fb: UntypedFormBuilder,public dialog:MatDialog) {
     this.id = activatedRouter.snapshot.paramMap.get('id');
     this.invoice = this.invoiceService.getInvoiceList().filter(x => x.id === +this.id)[0];
 debugger;
@@ -48,7 +49,7 @@ debugger;
   ngOnInit(): void {
   }
 
-  itemControl(): FormGroup {
+  itemControl(): UntypedFormGroup {
 
     return this.fb.group({
       itemName: ['', Validators.required],
@@ -63,8 +64,8 @@ debugger;
     this.addForm.setControl('item', this.setItem(this.invoice.orders));
   }
 
-  setItem(order: any): FormArray {
-    const fa = new FormArray([]);
+  setItem(order: any): UntypedFormArray {
+    const fa = new UntypedFormArray([]);
     order.forEach((s: any) => {
       fa.push(this.fb.group({
         itemName: s.itemName,
@@ -78,7 +79,7 @@ debugger;
 
 
   btnAddItemClick(): void {
-    (<FormArray>this.addForm.get('item')).push(this.itemControl());
+    (<UntypedFormArray>this.addForm.get('item')).push(this.itemControl());
   }
 
   btnRemoveClick(i: number): void {
@@ -89,7 +90,7 @@ debugger;
     this.grandTotal = this.subTotal + this.vat;
 
 
-    (<FormArray>this.addForm.get('item')).removeAt(i);
+    (<UntypedFormArray>this.addForm.get('item')).removeAt(i);
 
 
 
@@ -102,7 +103,7 @@ debugger;
 
     let total: number = 0;
 
-    for (let t = 0; t < (<FormArray>this.addForm.get('item')).length; t++) {
+    for (let t = 0; t < (<UntypedFormArray>this.addForm.get('item')).length; t++) {
       if (this.addForm.get('item')?.value[t].itemCost != '' && this.addForm.get('item')?.value[t].itemSold) {
         total = (this.addForm.get('item')?.value[t].itemCost * this.addForm.get('item')?.value[t].itemSold) + total;
       }
@@ -123,7 +124,7 @@ debugger;
 
     this.invoice.orders = [];
 
-    for (let t = 0; t < (<FormArray>this.addForm.get('item')).length; t++) {
+    for (let t = 0; t < (<UntypedFormArray>this.addForm.get('item')).length; t++) {
       let o: order = new order();
       o.itemName = this.addForm.get('item')?.value[t].itemName;
       o.unitPrice = this.addForm.get('item')?.value[t].itemCost;

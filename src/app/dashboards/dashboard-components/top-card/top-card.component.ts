@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-top-card',
-  templateUrl: './top-card.component.html',
-  styleUrls: ['./top-card.component.scss']
+    selector: 'app-top-card',
+    templateUrl: './top-card.component.html',
+    styleUrls: ['./top-card.component.scss'],
+    standalone: false
 })
 export class TopCardComponent implements OnInit {
 

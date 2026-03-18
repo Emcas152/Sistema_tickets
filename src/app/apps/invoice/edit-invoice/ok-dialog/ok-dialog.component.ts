@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-ok-dialog',
-  templateUrl: './ok-dialog.component.html',
-  styleUrls: ['./ok-dialog.component.scss']
+    selector: 'app-ok-dialog',
+    templateUrl: './ok-dialog.component.html',
+    styleUrls: ['./ok-dialog.component.scss'],
+    standalone: false
 })
 export class OkDialogComponent implements OnInit {
 

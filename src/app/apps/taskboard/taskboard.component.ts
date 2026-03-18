@@ -10,9 +10,10 @@ interface todos {
 
 
 @Component({
-  selector: 'app-taskboard',
-  templateUrl: './taskboard.component.html',
-  styleUrls: ['./taskboard.component.scss']
+    selector: 'app-taskboard',
+    templateUrl: './taskboard.component.html',
+    styleUrls: ['./taskboard.component.scss'],
+    standalone: false
 })
 export class TaskboardComponent {
     

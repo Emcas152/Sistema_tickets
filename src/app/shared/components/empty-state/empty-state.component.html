@@ -1,0 +1,11 @@
+<mat-card class="empty-state">
+  <mat-card-content>
+    <mat-icon>confirmation_number</mat-icon>
+    <h3>{{ title }}</h3>
+    <p>{{ message }}</p>
+
+    <a *ngIf="actionLabel && actionLink" mat-stroked-button color="primary" [routerLink]="actionLink">
+      {{ actionLabel }}
+    </a>
+  </mat-card-content>
+</mat-card>

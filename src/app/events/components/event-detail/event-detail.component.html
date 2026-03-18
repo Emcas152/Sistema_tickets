@@ -1,0 +1,59 @@
+<ng-container *ngIf="event as currentEvent; else detailSkeleton">
+  <app-page-header
+    [title]="currentEvent.title"
+    [subtitle]="currentEvent.venue + ' · ' + currentEvent.city"
+    actionLabel="Comprar entradas"
+    [actionLink]="'/seat-map/' + currentEvent.id">
+  </app-page-header>
+
+  <div class="detail-layout">
+    <section class="hero-panel">
+      <img [src]="currentEvent.heroImage" [alt]="currentEvent.title" />
+      <div class="meta-grid">
+        <div>
+          <label>Fecha</label>
+          <strong>{{ currentEvent.startsAt | date: 'fullDate' }}</strong>
+        </div>
+        <div>
+          <label>Ubicación</label>
+          <strong>{{ currentEvent.address }}</strong>
+        </div>
+        <div>
+          <label>Entradas desde</label>
+          <strong>Q{{ currentEvent.minPrice }}</strong>
+        </div>
+      </div>
+    </section>
+
+    <aside class="ticket-panel">
+      <h3>Tipos de tickets</h3>
+      <div class="ticket-type" *ngFor="let ticket of currentEvent.ticketTypes">
+        <div>
+          <strong>{{ ticket.name }}</strong>
+          <span>{{ ticket.availability }} disponibles</span>
+        </div>
+        <b>Q{{ ticket.price }}</b>
+      </div>
+
+      <a mat-flat-button color="primary" class="w-100" [routerLink]="['/seat-map', currentEvent.id]">
+        Seleccionar asientos
+      </a>
+    </aside>
+  </div>
+
+  <mat-card class="description-card">
+    <mat-card-content>
+      <h3>Sobre el evento</h3>
+      <p>{{ currentEvent.description }}</p>
+    </mat-card-content>
+  </mat-card>
+</ng-container>
+
+<ng-template #detailSkeleton>
+  <app-empty-state
+    title="Evento no disponible"
+    message="No fue posible cargar la información del evento en este momento."
+    actionLabel="Volver a eventos"
+    actionLink="/events">
+  </app-empty-state>
+</ng-template>

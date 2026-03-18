@@ -4,9 +4,10 @@ declare var require: any;
 const data: any = require('src/assets/company.json');
 
 @Component({
-  selector: 'app-table-editing',
-  templateUrl: './table-editing.component.html',
-  styleUrls: ['./table-editing.component.scss']
+    selector: 'app-table-editing',
+    templateUrl: './table-editing.component.html',
+    styleUrls: ['./table-editing.component.scss'],
+    standalone: false
 })
 export class TableEditingComponent {
   editing:any = {};

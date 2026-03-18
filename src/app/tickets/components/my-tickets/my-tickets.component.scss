@@ -1,0 +1,33 @@
+.tickets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.ticket-card {
+  border-radius: 22px;
+}
+
+.ticket-card h3 {
+  margin: 0 0 8px;
+}
+
+.ticket-card p,
+.ticket-card small {
+  color: #6b7280;
+}
+
+.ticket-qr {
+  display: grid;
+  place-items: center;
+  margin: 18px 0;
+  padding: 16px;
+  border-radius: 18px;
+  background: #f9fafb;
+}
+
+.ticket-qr img {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+}

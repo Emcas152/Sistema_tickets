@@ -10,9 +10,10 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { MenuItems } from '../../../shared/menu-items/menu-items';
 
 @Component({
-  selector: 'app-vertical-sidebar',
-  templateUrl: './vertical-sidebar.component.html',
-  styleUrls: []
+    selector: 'app-vertical-sidebar',
+    templateUrl: './vertical-sidebar.component.html',
+    styleUrls: [],
+    standalone: false
 })
 
 export class VerticalAppSidebarComponent implements OnDestroy {

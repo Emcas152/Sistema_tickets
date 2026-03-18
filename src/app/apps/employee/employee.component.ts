@@ -120,7 +120,8 @@ const employees = [
 ];
 
 @Component({
-    templateUrl: './employee.component.html'
+    templateUrl: './employee.component.html',
+    standalone: false
 })
 
 
@@ -222,6 +223,7 @@ export class EmployeeComponent implements OnInit, AfterViewInit {
     // tslint:disable-next-line: component-selector
     selector: 'dialog-content',
     templateUrl: 'dialog-content.html',
+    standalone: false
 })
 // tslint:disable-next-line: component-class-suffix
 export class EmployeeDialogContent {

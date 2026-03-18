@@ -5,15 +5,16 @@ import {
   Validators,
   FormControl
 } from '@angular/forms';
-import { CustomValidators } from 'ngx-custom-validators';
+import { CustomValidators } from '../../shared/validators/custom-validators';
 
 const password = new FormControl('', Validators.required);
 const confirmPassword = new FormControl('', CustomValidators.equalTo(password));
 
 @Component({
-  selector: 'app-form-validation',
-  templateUrl: './form-validation.component.html',
-  styleUrls: ['./form-validation.component.scss']
+    selector: 'app-form-validation',
+    templateUrl: './form-validation.component.html',
+    styleUrls: ['./form-validation.component.scss'],
+    standalone: false
 })
 export class FormValidationComponent implements OnInit {
   public form: FormGroup = Object.create(null);
@@ -31,7 +32,7 @@ export class FormValidationComponent implements OnInit {
       ],
       email: [
         null,
-        Validators.compose([Validators.required, CustomValidators.email])
+        Validators.compose([Validators.required, Validators.email])
       ],
       range: [
         null,

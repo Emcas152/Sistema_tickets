@@ -32,9 +32,10 @@ export interface VisitorChartOptions {
 }
 
 @Component({
-  selector: 'app-visitor2',
-  templateUrl: './visitor2.component.html',
-  styleUrls: ['./visitor2.component.scss']
+    selector: 'app-visitor2',
+    templateUrl: './visitor2.component.html',
+    styleUrls: ['./visitor2.component.scss'],
+    standalone: false
 })
 export class Visitor2Component implements OnInit {
 

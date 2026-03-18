@@ -1,24 +1,26 @@
 import {
-    Component,
-    ChangeDetectionStrategy,
-    Inject
+  Component,
+  ChangeDetectionStrategy,
+  Inject,
+  DOCUMENT
 } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+
 import {
     MatDialog,
     MatDialogRef,
     MatDialogConfig,
     MAT_DIALOG_DATA
 } from '@angular/material/dialog';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, UntypedFormGroup } from '@angular/forms';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-calendar-dialog',
     templateUrl: './dialog.component.html',
+    standalone: false
 })
 export class CalendarDialogComponent {
-    options!: FormGroup;
+    options!: UntypedFormGroup;
     constructor(
         public dialogRef: MatDialogRef<CalendarDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any
@@ -36,7 +38,7 @@ import {
     addHours
 } from 'date-fns';
 
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 import {
     CalendarEvent,
@@ -44,7 +46,6 @@ import {
     CalendarEventTimesChangedEvent,
     CalendarView
 } from 'angular-calendar';
-import { NullTemplateVisitor } from '@angular/compiler';
 
 const colors: any = {
     red: {
@@ -67,10 +68,11 @@ const colors: any = {
     selector: 'app-fullcalendar',
     changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './fullcalendar.component.html',
-    styleUrls: ['./fullcalendar.component.scss']
+    styleUrls: ['./fullcalendar.component.scss'],
+    standalone: false
 })
 export class FullcalendarComponent {
-    dialogRef: MatDialogRef<CalendarDialogComponent> = Object.create(NullTemplateVisitor);
+    dialogRef!: MatDialogRef<CalendarDialogComponent>;
     lastCloseResult = '';
     actionsAlignment = '';
     config: MatDialogConfig = {
@@ -111,7 +113,7 @@ export class FullcalendarComponent {
         }
     ];
 
-    refresh: Subject<any> = new Subject();
+    refresh: Subject<void> = new Subject();
 
     events: CalendarEvent[] = [
         {
@@ -192,7 +194,7 @@ export class FullcalendarComponent {
         this.dialogRef.afterClosed().subscribe((result: string) => {
             this.lastCloseResult = result;
             this.dialogRef = Object.create(null);
-            this.refresh.next(); 
+            this.refresh.next();
         });
     }
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 export interface ExampleTab {
     label: string;
@@ -10,11 +10,12 @@ export interface ExampleTab {
 @Component({
     selector: 'app-tabs',
     templateUrl: './tabs.component.html',
-    styleUrls: ['./tabs.component.scss']
+    styleUrls: ['./tabs.component.scss'],
+    standalone: false
 })
 export class TabsComponent {
     tabs = ['First', 'Second', 'Third'];
-    selected = new FormControl(0);
+    selected = new UntypedFormControl(0);
 
     tabLoadTimes: Date[] = [];
 

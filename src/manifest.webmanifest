@@ -1,0 +1,29 @@
+{
+  "name": "Alcon Producciones",
+  "short_name": "Alcon",
+  "theme_color": "#111827",
+  "background_color": "#111827",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "description": "Plataforma multiplataforma para compra de tickets, reservas temporales y acceso digital a eventos de Alcon Producciones.",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/pwa/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/pwa/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/pwa/icon-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -48,7 +48,8 @@ const NAMES = [
 @Component({
     selector: 'app-mix',
     templateUrl: './mix.component.html',
-    styleUrls: ['./mix.component.scss']
+    styleUrls: ['./mix.component.scss'],
+    standalone: false
 })
 export class MixComponent implements AfterViewInit {
     displayedColumns = ['id', 'name', 'progress', 'color'];

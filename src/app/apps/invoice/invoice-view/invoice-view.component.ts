@@ -6,9 +6,10 @@ import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
-  selector: 'app-invoice-view',
-  templateUrl: './invoice-view.component.html',
-  styleUrls: ['./invoice-view.component.scss']
+    selector: 'app-invoice-view',
+    templateUrl: './invoice-view.component.html',
+    styleUrls: ['./invoice-view.component.scss'],
+    standalone: false
 })
 export class InvoiceViewComponent implements OnInit {
 

@@ -114,7 +114,8 @@ export class DynamicDataSource implements DataSource<DynamicFlatNode> {
 @Component({
     selector: 'app-dynamic-tree',
     templateUrl: './dynamic-tree.component.html',
-    styleUrls: ['./dynamic-tree.component.scss']
+    styleUrls: ['./dynamic-tree.component.scss'],
+    standalone: false
 })
 export class DynamictreeComponent {
 

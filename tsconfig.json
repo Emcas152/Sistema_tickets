@@ -8,22 +8,46 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "downlevelIteration": true,
+    "paths": {
+      "@ngx-translate/core": [
+        "src/app/shared/compat/ngx-translate-core"
+      ],
+      "@ngx-translate/http-loader": [
+        "src/app/shared/compat/ngx-translate-http-loader"
+      ],
+      "@swimlane/ngx-charts": [
+        "src/app/shared/compat/ngx-charts"
+      ],
+      "ng-chartist": [
+        "src/app/shared/compat/ng-chartist"
+      ],
+      "ng2-charts": [
+        "src/app/shared/compat/ng2-charts"
+      ],
+      "ng2-search-filter": [
+        "src/app/shared/compat/ng2-search-filter"
+      ],
+      "ngx-pagination": [
+        "src/app/shared/compat/ngx-pagination"
+      ],
+      "ngx-perfect-scrollbar": [
+        "src/app/shared/compat/ngx-perfect-scrollbar"
+      ]
+    },
     "module": "es2020",
     "outDir": "./dist/out-tsc",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
     "sourceMap": true,
     "declaration": false,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es2015",
+    "target": "ES2022",
     "strict": true,
     "typeRoots": [
       "node_modules/@types"
     ],
-    "lib": [
-      "es2017",
-      "dom"
-    ]
+    "useDefineForClassFields": false
   }
 }

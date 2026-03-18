@@ -8,10 +8,12 @@
             <strong>Todo</strong>
           </div>
           <div class="taskboard-cards" [cdkDropListData]="todos" cdkDropList (cdkDropListDropped)="drop($event)">
-            <div class="taskboard-task" cdkDrag *ngFor="let task of todos" [ngClass]="task.class">
-              <div class="taskboard-task-title">{{task.title}}</div>
-              <span class="task-decription">{{task.description}}</span>
-            </div>
+            @for (task of todos; track task) {
+              <div class="taskboard-task" cdkDrag [ngClass]="task.class">
+                <div class="taskboard-task-title">{{task.title}}</div>
+                <span class="task-decription">{{task.description}}</span>
+              </div>
+            }
           </div>
         </div>
       </div>
@@ -22,10 +24,12 @@
             <strong>Inprogress</strong>
           </div>
           <div class="taskboard-cards" [cdkDropListData]="inprogress" cdkDropList (cdkDropListDropped)="drop($event)">
-            <div class="taskboard-task" cdkDrag *ngFor="let task of inprogress" [ngClass]="task.class">
-              <div class="taskboard-task-title">{{task.title}}</div>
-              <span class="task-decription">{{task.description}}</span>
-            </div>
+            @for (task of inprogress; track task) {
+              <div class="taskboard-task" cdkDrag [ngClass]="task.class">
+                <div class="taskboard-task-title">{{task.title}}</div>
+                <span class="task-decription">{{task.description}}</span>
+              </div>
+            }
           </div>
         </div>
       </div>
@@ -36,10 +40,12 @@
             <strong>Onhold</strong>
           </div>
           <div class="taskboard-cards" [cdkDropListData]="onhold" cdkDropList (cdkDropListDropped)="drop($event)">
-            <div class="taskboard-task" cdkDrag *ngFor="let task of onhold" [ngClass]="task.class">
-              <div class="taskboard-task-title">{{task.title}}</div>
-              <span class="task-decription">{{task.description}}</span>
-            </div>
+            @for (task of onhold; track task) {
+              <div class="taskboard-task" cdkDrag [ngClass]="task.class">
+                <div class="taskboard-task-title">{{task.title}}</div>
+                <span class="task-decription">{{task.description}}</span>
+              </div>
+            }
           </div>
         </div>
       </div>
@@ -51,16 +57,18 @@
             <strong>Completed</strong>
           </div>
           <div class="taskboard-cards" [cdkDropListData]="completed" cdkDropList (cdkDropListDropped)="drop($event)">
-            <div class="taskboard-task" cdkDrag *ngFor="let task of completed" [ngClass]="task.class">
-              <div class="taskboard-task-title">{{task.title}}</div>
-              <span class="task-decription">{{task.description}}</span>
-            </div>
+            @for (task of completed; track task) {
+              <div class="taskboard-task" cdkDrag [ngClass]="task.class">
+                <div class="taskboard-task-title">{{task.title}}</div>
+                <span class="task-decription">{{task.description}}</span>
+              </div>
+            }
           </div>
         </div>
       </div>
 
 
-      
+
 
 
     </div>

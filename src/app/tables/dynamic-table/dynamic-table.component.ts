@@ -23,7 +23,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
     selector: 'app-dynamictable',
     templateUrl: './dynamic-table.component.html',
-    styleUrls: ['./dynamic-table.component.scss']
+    styleUrls: ['./dynamic-table.component.scss'],
+    standalone: false
 })
 export class DynamicTableComponent {
     displayedColumns: string[] = ['name', 'weight', 'symbol', 'position'];

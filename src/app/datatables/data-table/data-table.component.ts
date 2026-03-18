@@ -4,9 +4,10 @@ import { Component, ViewChild } from '@angular/core';
  const data: any = require('src/assets/company.json');
 
 @Component({
-  selector: 'app-data-table',
-  templateUrl: './data-table.component.html',
-  styleUrls: ['./data-table.component.scss']
+    selector: 'app-data-table',
+    templateUrl: './data-table.component.html',
+    styleUrls: ['./data-table.component.scss'],
+    standalone: false
 })
 export class DataTableComponent {
   editing = {};

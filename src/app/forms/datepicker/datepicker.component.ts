@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
 import { DateAdapter } from '@angular/material/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 
-import * as _moment from 'moment';
-
-const moment = _moment;
+import moment from 'moment';
 
 export const MY_FORMATS = {
     parse: {
@@ -26,14 +24,7 @@ export const MY_FORMATS = {
     selector: 'app-datepicker',
     templateUrl: './datepicker.component.html',
     styleUrls: ['./datepicker.component.scss'],
-    // providers: [
-    //     {
-    //         provide: DateAdapter,
-    //         useClass: MomentDateAdapter,
-    //         deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
-    //     },
-    //     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }
-    // ]
+    standalone: false
 })
 export class DatepickerComponent {
 
@@ -45,15 +36,15 @@ export class DatepickerComponent {
     maxDate = new Date(2020, 0, 1);
 
     // Datepicker selected value
-    date = new FormControl(new Date());
-    serializedDate = new FormControl(new Date().toISOString());
+    date = new UntypedFormControl(new Date());
+    serializedDate = new UntypedFormControl(new Date().toISOString());
 
     // Datepicker input and change event
 
     events: string[] = [];
 
     // custom date
-    customdate = new FormControl(moment());
+    customdate = new UntypedFormControl(moment());
 
     addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
         this.events.push(`${type}: ${event.value}`);

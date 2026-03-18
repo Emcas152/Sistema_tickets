@@ -3,16 +3,15 @@ import { Router } from '@angular/router';
 import {
   FormBuilder,
   FormGroup,
-  Validators,
-  FormControl
+  Validators
 } from '@angular/forms';
-import { CustomValidators } from 'ngx-custom-validators';
 
 
 @Component({
-  selector: 'app-forgot',
-  templateUrl: './forgot.component.html',
-  styleUrls: ['./forgot.component.scss']
+    selector: 'app-forgot',
+    templateUrl: './forgot.component.html',
+    styleUrls: ['./forgot.component.scss'],
+    standalone: false
 })
 export class ForgotComponent implements OnInit {
   public form: FormGroup = Object.create(null);
@@ -22,7 +21,7 @@ export class ForgotComponent implements OnInit {
     this.form = this.fb.group({
       email: [
         null,
-        Validators.compose([Validators.required, CustomValidators.email])
+        Validators.compose([Validators.required, Validators.email])
       ]
     });
   }

@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {
-  FormBuilder,
-  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormGroup,
   Validators
 } from '@angular/forms';
 
 
 @Component({
-  selector: 'app-lockscreen',
-  templateUrl: './lockscreen.component.html',
-  styleUrls: ['./lockscreen.component.scss']
+    selector: 'app-lockscreen',
+    templateUrl: './lockscreen.component.html',
+    styleUrls: ['./lockscreen.component.scss'],
+    standalone: false
 })
 export class LockscreenComponent implements OnInit {
-  public form: FormGroup = Object.create(null);
-  constructor(private fb: FormBuilder, private router: Router) { }
+  public form: UntypedFormGroup = Object.create(null);
+  constructor(private fb: UntypedFormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.form = this.fb.group({
