@@ -1,5 +1,37 @@
 export type SeatStatus = 'available' | 'reserved' | 'sold' | 'selected';
 
+export interface SeatCoordinate {
+  x: number;
+  y: number;
+}
+
+export interface EventTableLayout {
+  id?: string;
+  label?: string;
+  x?: number;
+  y?: number;
+  width?: number;
+  height?: number;
+  rotation?: number;
+  seatIds?: string[];
+}
+
+export interface EventZoneLayout {
+  seatsPerTable?: number;
+  tableWidth?: number;
+  tableHeight?: number;
+  tables?: EventTableLayout[];
+}
+
+export interface EventVenueLayout {
+  width?: number;
+  height?: number;
+  stageLabel?: string;
+  stageImage?: string;
+  sidebarImage?: string;
+  entranceLabel?: string;
+}
+
 export interface TicketType {
   id: number | string;
   name: string;
@@ -16,6 +48,7 @@ export interface EventSeat {
   status: SeatStatus;
   zoneId: string;
   holdExpiresAt?: string | null;
+  position?: SeatCoordinate;
 }
 
 export interface EventZone {
@@ -24,6 +57,7 @@ export interface EventZone {
   color: string;
   price: number;
   seats: EventSeat[];
+  layout?: EventZoneLayout;
 }
 
 export interface EventSummary {
@@ -44,6 +78,7 @@ export interface EventDetail extends EventSummary {
   address: string;
   seatMap: EventZone[];
   ticketTypes: TicketType[];
+  venueLayout?: EventVenueLayout;
 }
 
 export interface EventListResponse {

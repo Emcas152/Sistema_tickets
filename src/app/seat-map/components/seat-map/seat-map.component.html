@@ -1,7 +1,7 @@
 <ng-container *ngIf="event as currentEvent; else loadingState">
   <app-page-header
     [title]="'Selecciona tus asientos para ' + currentEvent.title"
-    [subtitle]="currentEvent.venue + ' · ' + (currentEvent.startsAt | date: 'medium')">
+    [subtitle]="currentEvent.venue + ' - ' + (currentEvent.startsAt | date: 'medium')">
   </app-page-header>
 
   <div class="reservation-banner" *ngIf="(remainingLabel$ | async) as remainingLabel">
@@ -10,36 +10,114 @@
   </div>
 
   <div class="seat-map-layout">
-    <section class="seat-map-panel">
-      <div class="legend">
-        <span class="legend-item"><i class="seat seat-available"></i> Disponible</span>
-        <span class="legend-item"><i class="seat seat-reserved"></i> Reservado</span>
-        <span class="legend-item"><i class="seat seat-sold"></i> Vendido</span>
-        <span class="legend-item"><i class="seat seat-selected"></i> Seleccionado</span>
+    <section class="seat-map-panel venue-panel">
+      <div class="venue-toolbar">
+        <div>
+          <h3>Plano interactivo del recinto</h3>
+          <p>
+            Vista tipo venue con mesas y localidades alrededor. El mapa se refresca automaticamente
+            para reflejar reservas y ventas en tiempo real.
+          </p>
+        </div>
+
+        <div class="legend compact-legend">
+          <span class="legend-item" *ngFor="let zone of zoneSummary">
+            <i class="seat-dot seat-dot-zone" [style.background]="zone.color"></i>
+            {{ zone.name }} libre
+          </span>
+          <span class="legend-item"><i class="seat-dot seat-dot-reserved"></i> Reservado</span>
+          <span class="legend-item"><i class="seat-dot seat-dot-sold"></i> Ocupado</span>
+          <span class="legend-item"><i class="seat-dot seat-dot-selected"></i> Seleccionado</span>
+        </div>
       </div>
 
-      <div class="zone-card" *ngFor="let zone of currentEvent.seatMap">
-        <div class="zone-header">
-          <div>
-            <h3>{{ zone.name }}</h3>
-            <small>Q{{ zone.price }} por asiento</small>
+      <div class="venue-frame">
+        <div class="venue-canvas" [style.width.px]="venueWidth" [style.height.px]="venueHeight">
+          <div
+            class="stage-banner"
+            [style.background-image]="'linear-gradient(135deg, rgba(7, 10, 18, 0.76), rgba(60, 39, 8, 0.58)), url(' + (currentEvent.venueLayout?.stageImage || currentEvent.heroImage) + ')'">
+            <span class="stage-title">{{ currentEvent.venueLayout?.stageLabel || 'ESCENARIO' }}</span>
+            <span class="stage-meta">{{ currentEvent.venue }}</span>
           </div>
-          <span class="zone-dot" [style.background]="zone.color"></span>
-        </div>
 
-        <div class="seat-grid">
-          <button
-            type="button"
-            *ngFor="let seat of zone.seats"
-            [class]="seatClass(seat.status)"
-            (click)="selectSeat(zone, seat)">
-            {{ seat.label }}
-          </button>
+          <div
+            class="zone-rail"
+            *ngFor="let rail of zoneRails"
+            [style.top.px]="rail.top"
+            [style.height.px]="rail.height"
+            [style.background]="rail.color">
+            {{ rail.name }}
+          </div>
+
+          <div class="facility-card">
+            <span>Banos</span>
+          </div>
+
+          <div class="entrance-card">
+            <mat-icon>arrow_back</mat-icon>
+            <strong>{{ currentEvent.venueLayout?.entranceLabel || 'INGRESO' }}</strong>
+          </div>
+
+          <div
+            class="table-node"
+            *ngFor="let table of venueTables; trackBy: trackByTable"
+            [ngStyle]="tableStyle(table)">
+            <div class="table-surface">
+              <div class="table-label">{{ table.label }}</div>
+              <small>{{ table.zoneName }}</small>
+            </div>
+
+            <button
+              type="button"
+              *ngFor="let seatView of table.seats; trackBy: trackBySeat"
+              [ngClass]="seatClass(seatView.seat.status)"
+              [ngStyle]="seatStyle(table, seatView)"
+              (click)="selectSeat(table.zone, seatView.seat)">
+              {{ seatView.seat.number }}
+            </button>
+          </div>
         </div>
+      </div>
+
+      <div class="venue-tips">
+        <span><mat-icon>touch_app</mat-icon> Toca una localidad para reservarla.</span>
+        <span><mat-icon>sync</mat-icon> El plano se actualiza segun reservas de otros usuarios.</span>
+        <span><mat-icon>verified_user</mat-icon> Los asientos seleccionados quedan apartados por 5 minutos.</span>
       </div>
     </section>
 
-    <aside>
+    <aside class="venue-sidebar">
+      <div class="poster-card">
+        <div
+          class="poster-cover"
+          [style.background-image]="'linear-gradient(180deg, rgba(11, 12, 16, 0.10), rgba(79, 4, 4, 0.88)), url(' + (currentEvent.venueLayout?.sidebarImage || currentEvent.heroImage) + ')'">
+          <div class="poster-copy">
+            <span class="poster-kicker">Alcon Producciones</span>
+            <h3>{{ currentEvent.title }}</h3>
+            <p>{{ currentEvent.startsAt | date: 'EEEE, d MMMM y, h:mm a' }}</p>
+            <strong>{{ currentEvent.venue }}</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <div class="price-card-header">
+          <h4>Disponibilidad por zona</h4>
+          <small>{{ currentEvent.city }}</small>
+        </div>
+
+        <div class="price-line" *ngFor="let zone of zoneSummary">
+          <div class="price-zone">
+            <i class="seat-dot seat-dot-zone" [style.background]="zone.color"></i>
+            <div>
+              <strong>{{ zone.name }}</strong>
+              <span>{{ zone.available }} libres / {{ zone.sold }} ocupados</span>
+            </div>
+          </div>
+          <b>Q{{ zone.price }}</b>
+        </div>
+      </div>
+
       <app-cart title="Resumen de compra"></app-cart>
     </aside>
   </div>
@@ -48,6 +126,6 @@
 <ng-template #loadingState>
   <app-empty-state
     title="Cargando mapa del recinto"
-    message="Estamos consultando la disponibilidad más reciente para mostrarte el mapa interactivo.">
+    message="Estamos consultando la disponibilidad mas reciente para mostrarte el mapa interactivo.">
   </app-empty-state>
 </ng-template>
